@@ -1,12 +1,34 @@
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
-import { Container, Nav, Navbar} from 'react-bootstrap';
-import RecipeCards from './Components/Card/RecipeCards';
+import { Container, Nav, Navbar } from 'react-bootstrap';
+import RecipeCards, { type RecipeCardsI } from './Components/Card/RecipeCards';
 import Recipe from './Components/Recipe/Recipe';
+import { useEffect, useState } from 'react';
+import axios, { AxiosError } from 'axios';
 
 function App() {
 
+  // state pour gérer les recettes
+  const [allRecipes, setAllRecipes] = useState<RecipeCardsI[]>([])
+
+  // call de l'API
+  useEffect(() => {
+    const getAllRecipe = async () => {
+      try {
+        const response = await axios.get('https://orecipesapi.onrender.com/api/recipes')
+        // srockage des recettes dans le state
+        setAllRecipes(response.data)
+      } catch (e) {
+        if (e instanceof AxiosError) {
+          console.log(e.message);
+        }
+      }
+    }
+    getAllRecipe()
+  }, []);
+
+  console.log("voici les recettes", allRecipes)
 
   return (
     <>
@@ -44,15 +66,9 @@ function App() {
           <h2>Voici nos 6 recettes</h2>
         </div>
         <div id="recipes">
-          {/* <RecipeCards/>
-          <RecipeCards/>
-          <RecipeCards/>
-          <RecipeCards/>
-          <RecipeCards/>
-          <RecipeCards/>
-          <RecipeCards/>
-          <RecipeCards/>
-          <RecipeCards/> */}
+          {allRecipes.map((recipe) => (
+          <RecipeCards key={recipe.id} recipe={recipe}/>
+          ))}
           {/* <Recipe/> */}
         </div>
       </div>

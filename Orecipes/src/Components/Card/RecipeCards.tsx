@@ -1,18 +1,34 @@
 import { Button, Card } from 'react-bootstrap';
 
+export interface RecipeCardsI {
+  id: number;
+  title: string;
+  slug: string;
+  thumbnail: string;
+  author: string;
+  difficulty: string;
+  description: string;
+  ingredients: [
+    {
+      id: number;
+      quantity: number;
+      unit: string;
+      name: string;
+    }];
+  instructions: string;
+}
 
-export default function RecipeCards () {
-    return (
-<Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="../../../public/images/fondant.jpeg" />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the card's content.
-              </Card.Text>
-              <Button variant="primary">Voir la recette</Button>
-            </Card.Body>
-          </Card>
-    )
+export default function RecipeCards({recipe }: {recipe : RecipeCardsI}) {
+  return (
+    <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src={recipe.thumbnail} />
+      <Card.Body>
+        <Card.Title>{recipe.title}</Card.Title>
+        <Card.Text>
+          {recipe.description}
+        </Card.Text>
+        <Button variant="primary">Voir la recette</Button>
+      </Card.Body>
+    </Card>
+  )
 }

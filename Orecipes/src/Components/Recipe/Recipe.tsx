@@ -1,17 +1,19 @@
 import { Button } from "react-bootstrap";
 import { useParams } from "react-router";
 import type RecipeCardsI from "../@Types/recipe";
+import { useEffect } from "react";
 
 export default function Recipe({ allRecipes }: { allRecipes: RecipeCardsI[] }) {
 
- scrollTo(0,0)
-
+    // reset du scroll
+    useEffect(() => {
+        scrollTo(0, 0)
+    }, [])
 
     // Récupération du params.slug
     const params = useParams()
     const slug = params.slug
-    console.log("le slug est : ", slug)
-
+ 
     // identification de la recette liée au slug
     const recipe = allRecipes.find((recipe) => recipe.slug === slug);
 
@@ -23,7 +25,7 @@ export default function Recipe({ allRecipes }: { allRecipes: RecipeCardsI[] }) {
                 <ul>
                     {recipe?.ingredients.map((recipe) => (
 
-                        <li><Button variant="primary" key={recipe.id}>{recipe.quantity} {" "} {recipe.unit}</Button>{recipe.name}</li>
+                        <li key={recipe.id}><Button variant="primary" >{recipe.quantity} {" "} {recipe.unit}</Button>{recipe.name}</li>
                     ))}
                 </ul>
             </section>

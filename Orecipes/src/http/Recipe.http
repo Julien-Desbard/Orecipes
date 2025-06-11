@@ -4,23 +4,16 @@ GET https://orecipesapi.onrender.com/api/recipes
 ###
 
 
-# ###
-# # GET one card
-# GET http://localhost:5000/cards/2
-# ###
+### 
+# Check credentials
+POST https://orecipesapi.onrender.com/api/login
+content-type: application/json
 
-
-# ### 
-# # CREATE card
-# POST http://localhost:5000/cards
-# content-type: application/json
-
-# {
-#     "content": "Prendre un café",
-#     "list_id": 2,
-#     "color": "#ff00ff"
-# }
-# ###
+{
+  "email": "bob@mail.io",
+  "password": "bobo"
+}
+###
 
 
 # ### 

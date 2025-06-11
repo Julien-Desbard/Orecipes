@@ -1,8 +1,14 @@
 import { Button, Card } from 'react-bootstrap';
 import type RecipeCardsI from "../@Types/recipe";
+import { useEffect } from 'react';
 
 export default function Recipe({ allRecipes }: { allRecipes: RecipeCardsI[] }) {
- scrollTo(0,0)
+
+  // reset du scroll
+  useEffect(() => {
+    scrollTo(0, 0)
+  }, [])
+
   return (
     <div>
       <div id='title'>
@@ -11,7 +17,7 @@ export default function Recipe({ allRecipes }: { allRecipes: RecipeCardsI[] }) {
       </div>
       <div id="recipes">
         {allRecipes.map((recipe) => (
-          <Card style={{ width: '18rem' }}>
+          <Card key={recipe.id} style={{ width: '18rem' }}>
             <Card.Img variant="top" src={recipe.thumbnail} />
             <Card.Body>
               <Card.Title>{recipe.title}</Card.Title>
@@ -19,7 +25,7 @@ export default function Recipe({ allRecipes }: { allRecipes: RecipeCardsI[] }) {
                 {recipe.description}
               </Card.Text>
               <Card.Text className='diff'>
-                <p className='diff'>Difficulté : {recipe.description}</p>
+                Difficulté : {recipe.description}
               </Card.Text>
               <Button variant="primary">Voir la recette</Button>
             </Card.Body>

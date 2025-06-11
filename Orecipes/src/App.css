@@ -1,15 +1,122 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: flex;
 }
+
+/* ================ Nav Bar =============== */
+
+#menu {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 15%;
+  text-align: justify;
+  background-color: black;
+  height: 100vh; /* C'est cette ligne qui force la hauteur sur tout l'écran */
+
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* background-color: black; */
+
+}
+
+.nav-link {
+  /* background-color: black; */
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+
+  color: #259CEE;
+}
+
+#menu .navbar,
+#menu .container,
+#menu .navbar-collapse,
+#menu .navbar-nav,
+#menu .nav-link {
+  background-color: black !important;}
+
+#menu .nav-link {
+  color: whitesmoke;
+  font-weight: bold;
+  padding: 1rem;
+  text-align: left;
+  display: block;
+  width: 100%;
+}
+
+/* Optionnel : hover effet */
+#menu .nav-link:hover {
+  color: #259CEE;
+  background-color: #111; /* petit fond gris foncé au hover */
+}
+
+
+/*==================== Header ===================== */
+#header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 0 auto;
+}
+
+input {
+  margin : 0.5rem
+}
+
+/*  ========================= Container ===================== */
+#container {
+  width: 70%;
+}
+
+
+
+/* =================== recipes ================ */
+#recipes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  margin: 0.5rem;
+}
+
+#title {
+  display: flex;
+  flex-direction: column;
+align-items: flex-start;
+}
+
+h1 {
+  color: #259CEE;
+  font-size: 2rem;
+  margin: 0.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin : 0.5rem
+}
+
+
+/*  ====================== logo ===================== */
 
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
+  margin-right: auto;
 }
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
@@ -17,6 +124,23 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+
+/*  ====================== primary button =============== */
+
+.btn-primary {
+ margin:0.5rem;
+}
+
+/* ======================== Images ================= */
+
+.recipe-img-full {
+  width: 100%;
+}
+
+li {
+  list-style-type : none;
+}
+
 
 @keyframes logo-spin {
   from {

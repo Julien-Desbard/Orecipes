@@ -1,31 +1,39 @@
 import { Button } from "react-bootstrap";
+import { useParams } from "react-router";
+import type RecipeCardsI from "../@Types/recipe";
 
-export default function Recipe () {
-   return ( 
-   <div className="Recipe">
-<img className="recipe-img-full" src="../../../public/images/fondant.jpeg" alt="" />
-<h1>Fondant au chocolat sans Gluten</h1>
-<section id="ingredients">
-    <ul>
-        <li><Button variant="primary">200 g</Button>Chocolat noir</li>
-        <li><Button variant="primary">200 g</Button>Chocolat noir</li>
-        <li><Button variant="primary">200 g</Button>Chocolat noir</li>
-        <li><Button variant="primary">200 g</Button>Chocolat noir</li>
-        <li><Button variant="primary">200 g</Button>Chocolat noir</li>
-        <li><Button variant="primary">200 g</Button>Chocolat noir</li>
-    </ul>
-</section>
-<section id="recipe-steps">
-<ul>
-    <li> faire-ci</li>
-    <li> faire-ci</li>
-    <li> faire-ci</li>
-    <li> faire-ci</li>
-    <li> faire-ci</li>
-    <li> faire-ci</li>
+export default function Recipe({ allRecipes }: { allRecipes: RecipeCardsI[] }) {
 
-</ul>
-</section>
-    </div>
-   )
+ scrollTo(0,0)
+
+
+    // Récupération du params.slug
+    const params = useParams()
+    const slug = params.slug
+    console.log("le slug est : ", slug)
+
+    // identification de la recette liée au slug
+    const recipe = allRecipes.find((recipe) => recipe.slug === slug);
+
+    return (
+        <div className="Recipe">
+            <img className="recipe-img-full" src={recipe?.thumbnail} alt={recipe?.description} />
+            <h1>{recipe?.title}</h1>
+            <section id="ingredients">
+                <ul>
+                    {recipe?.ingredients.map((recipe) => (
+
+                        <li><Button variant="primary" key={recipe.id}>{recipe.quantity} {" "} {recipe.unit}</Button>{recipe.name}</li>
+                    ))}
+                </ul>
+            </section>
+            <section id="recipe-steps">
+                <ul>
+                    {recipe?.instructions.map((instruction, index) => (
+                        <li key={index}>{instruction}</li>
+                    ))}
+                </ul>
+            </section>
+        </div>
+    )
 }

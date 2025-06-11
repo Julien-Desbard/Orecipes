@@ -1,8 +1,14 @@
-import { Nav } from "react-bootstrap";
+
+import { NavLink } from "react-router";
 import type { RecipeCardsProps } from "../@Types/recipe";
 
-export default function NavLinks ({ recipe }: RecipeCardsProps) {
+export default function NavLinks({ recipe }: RecipeCardsProps) {
     return (
-        <Nav.Link href="#link">{recipe.title}</Nav.Link>
-    )
+        <NavLink
+            to={`/${recipe.slug}`}
+            className="nav-link"
+        >
+            {recipe.title}
+        </NavLink>
+    );
 }

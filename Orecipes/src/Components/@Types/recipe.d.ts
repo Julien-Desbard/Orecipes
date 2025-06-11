@@ -13,9 +13,15 @@ export default interface RecipeCardsI {
       unit: string;
       name: string;
     }];
-  instructions: string;
+  instructions: string[];
 }
 
+// Props pour une seule recette
 export interface RecipeCardsProps {
   recipe: RecipeCardsI;
+}
+
+// props pour plusieurs recettes
+interface RecipeProps {
+  allRecipes: RecipeCardsI[];
 }

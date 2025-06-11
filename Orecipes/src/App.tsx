@@ -8,14 +8,16 @@ import axios, { AxiosError } from 'axios';
 import NavLinks from './Components/NavLinks/NavLinks';
 import type RecipeCardsI from './Components/@Types/recipe';
 import Loader from './Components/loader/Loader';
+import { Route, Routes, useParams } from 'react-router';
+import Recipe from './Components/Recipe/Recipe';
 
 function App() {
 
   // state pour gérer les recettes
   const [allRecipes, setAllRecipes] = useState<RecipeCardsI[]>([])
 
-// loader
-const [isLoading, setIsLoading] = useState(false)
+  // loader
+  const [isLoading, setIsLoading] = useState(false)
 
   // call de l'API
   useEffect(() => {
@@ -36,7 +38,7 @@ const [isLoading, setIsLoading] = useState(false)
   }, []);
 
   console.log("voici les recettes", allRecipes)
-
+  const params = useParams()
   return (
     <>
       <div id="menu">
@@ -45,14 +47,15 @@ const [isLoading, setIsLoading] = useState(false)
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-              {allRecipes.map((recipe) => (
-                <NavLinks key={recipe.id} recipe={recipe}/>
-              ))}
+                <Nav.Link href="/home">Home</Nav.Link>
+                {allRecipes.map((recipe) => (
+                  <NavLinks key={recipe.id} recipe={recipe} />
+                ))}
               </Nav>
             </Navbar.Collapse>
           </Container>
         </Navbar>
+
       </div>
       <div id="container">
         <div id="header">
@@ -65,17 +68,16 @@ const [isLoading, setIsLoading] = useState(false)
             </form>
           </header>
         </div>
-        <div id='title'>
-          <h1>Les recettes oRecipes</h1>
-          <h2>Voici nos 6 recettes</h2>
-        </div>
-        <div id="recipes">
-          {isLoading && <Loader/>}
-          {allRecipes.map((recipe) => (
-          <RecipeCards key={recipe.id} recipe={recipe}/>
-          ))}
-          {/* <Recipe/> */}
-        </div>
+
+        {isLoading && <Loader />}
+        {/* route pour toutes les recettes */}
+        <Routes>
+          <Route path="/home" element={<RecipeCards allRecipes={allRecipes} />} />
+        </Routes>
+        {/* route pour les recettes individuelles */}
+        <Routes>
+          <Route path="/:slug" element={<Recipe allRecipes={allRecipes} />} />
+        </Routes>
       </div>
 
     </>

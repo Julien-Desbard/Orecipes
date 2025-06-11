@@ -4,50 +4,50 @@ GET https://orecipesapi.onrender.com/api/recipes
 ###
 
 
-###
-# GET one card
-GET http://localhost:5000/cards/2
-###
+# ###
+# # GET one card
+# GET http://localhost:5000/cards/2
+# ###
 
 
-### 
-# CREATE card
-POST http://localhost:5000/cards
-content-type: application/json
+# ### 
+# # CREATE card
+# POST http://localhost:5000/cards
+# content-type: application/json
 
-{
-    "content": "Prendre un café",
-    "list_id": 2,
-    "color": "#ff00ff"
-}
-###
-
-
-### 
-# UPDATE card
-PATCH http://localhost:5000/cards/2
-content-type: application/json
-
-{
-    "content": "carte modifiée 5",
-    "position": 3,
-    "list_id": 1
-}
-###
+# {
+#     "content": "Prendre un café",
+#     "list_id": 2,
+#     "color": "#ff00ff"
+# }
+# ###
 
 
-###
-# DELETE card
-DELETE http://localhost:5000/cards/1
-###
+# ### 
+# # UPDATE card
+# PATCH http://localhost:5000/cards/2
+# content-type: application/json
+
+# {
+#     "content": "carte modifiée 5",
+#     "position": 3,
+#     "list_id": 1
+# }
+# ###
 
 
-###
-# ADD Tag to card
-PUT http://localhost:5000/cards/1/tags/2
-###
+# ###
+# # DELETE card
+# DELETE http://localhost:5000/cards/1
+# ###
 
-###
-# REMOVE Tag from card
-DELETE http://localhost:5000/cards/1/tags/2
-###
+
+# ###
+# # ADD Tag to card
+# PUT http://localhost:5000/cards/1/tags/2
+# ###
+
+# ###
+# # REMOVE Tag from card
+# DELETE http://localhost:5000/cards/1/tags/2
+# ###

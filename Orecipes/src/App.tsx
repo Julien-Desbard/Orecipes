@@ -2,10 +2,11 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import RecipeCards, { type RecipeCardsI } from './Components/Card/RecipeCards';
-import Recipe from './Components/Recipe/Recipe';
+import RecipeCards from './Components/Card/RecipeCards';
 import { useEffect, useState } from 'react';
 import axios, { AxiosError } from 'axios';
+import NavLinks from './Components/NavLinks/NavLinks';
+import type RecipeCardsI from './Components/@Types/recipe';
 
 function App() {
 
@@ -38,13 +39,10 @@ function App() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link href="#home">Accueil</Nav.Link>
-                <Nav.Link href="#link">Cookies au beurre de cachuete</Nav.Link>
-                <Nav.Link href="#link">Cookies au beurre de cachuete</Nav.Link>
-                <Nav.Link href="#link">Cookies au beurre de cachuete</Nav.Link>
-                <Nav.Link href="#link">Cookies au beurre de cachuete</Nav.Link>
-                <Nav.Link href="#link">Cookies au beurre de cachuete</Nav.Link>
-                <Nav.Link href="#link">Cookies au beurre de cachuete</Nav.Link>
+                <Nav.Link href="#home">Home</Nav.Link>
+              {allRecipes.map((recipe) => (
+                <NavLinks key={recipe.id} recipe={recipe}/>
+              ))}
               </Nav>
             </Navbar.Collapse>
           </Container>

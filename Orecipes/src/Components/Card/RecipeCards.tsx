@@ -12,8 +12,8 @@ export default function RecipeCards({ recipe }: RecipeCardsProps) {
         <Card.Text>
           {recipe.description}
         </Card.Text>
-        <Card.Text>
-          <p className='diff'>Difficulté : {recipe.description}</p>
+        <Card.Text className='diff'>
+          Difficulté : {recipe.description}
         </Card.Text>
         <Button variant="primary">Voir la recette</Button>
       </Card.Body>

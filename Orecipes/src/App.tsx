@@ -7,19 +7,25 @@ import { useEffect, useState } from 'react';
 import axios, { AxiosError } from 'axios';
 import NavLinks from './Components/NavLinks/NavLinks';
 import type RecipeCardsI from './Components/@Types/recipe';
+import Loader from './Components/loader/Loader';
 
 function App() {
 
   // state pour gérer les recettes
   const [allRecipes, setAllRecipes] = useState<RecipeCardsI[]>([])
 
+// loader
+const [isLoading, setIsLoading] = useState(false)
+
   // call de l'API
   useEffect(() => {
     const getAllRecipe = async () => {
+      setIsLoading(true)
       try {
         const response = await axios.get('https://orecipesapi.onrender.com/api/recipes')
         // srockage des recettes dans le state
         setAllRecipes(response.data)
+        setIsLoading(false)
       } catch (e) {
         if (e instanceof AxiosError) {
           console.log(e.message);
@@ -64,6 +70,7 @@ function App() {
           <h2>Voici nos 6 recettes</h2>
         </div>
         <div id="recipes">
+          {isLoading && <Loader/>}
           {allRecipes.map((recipe) => (
           <RecipeCards key={recipe.id} recipe={recipe}/>
           ))}

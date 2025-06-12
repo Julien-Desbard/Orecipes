@@ -1,4 +1,3 @@
-import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import { Container, Nav, Navbar } from 'react-bootstrap';
@@ -8,7 +7,7 @@ import axios, { AxiosError } from 'axios';
 import NavLinks from './Components/NavLinks/NavLinks';
 import type RecipeCardsI from './Components/@Types/recipe';
 import Loader from './Components/loader/Loader';
-import { NavLink, Route, Routes, useParams } from 'react-router';
+import { NavLink, Route, Routes } from 'react-router';
 import Recipe from './Components/Recipe/Recipe';
 import Form from './Components/Formulaire/Form';
 import Welcome from './Components/Welcome';

@@ -25,7 +25,3 @@ export interface RecipeCardsProps {
 export default interface RecipeProps {
   allRecipes: RecipeCardsI[];
 }
-
-export default interface userMessageI {
-    userMessage : string
-}

@@ -8,7 +8,7 @@ export default function Recipe({ allRecipes }: { allRecipes: RecipeCardsI[] }) {
     // reset du scroll
     useEffect(() => {
         scrollTo(0, 0)
-    }, [])
+    })
 
     // Récupération du params.slug
     const params = useParams()

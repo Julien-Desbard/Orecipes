@@ -1,13 +1,13 @@
 import { Button } from "react-bootstrap";
-import axios, { AxiosError } from 'axios';
-import { useEffect } from "react";
+
+
 
 interface FormProps {
     setUserMessage: React.Dispatch<React.SetStateAction<string>>;
     setFetchError: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function Form({ setUserMessage, setFetchError }: FormProps) {
+export default function Form({ setUserMessage }: FormProps) {
 
     // récupération des datas du fomulaire
 
@@ -29,9 +29,8 @@ export default function Form({ setUserMessage, setFetchError }: FormProps) {
             }
 
         } catch (e) {
-            if (e instanceof AxiosError) {
-                console.log(e.message);
-                setFetchError(e.message)
+            if (e) {
+                console.log(e);
             }
         }
     }

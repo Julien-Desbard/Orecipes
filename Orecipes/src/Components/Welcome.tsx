@@ -1,4 +1,4 @@
-import type userMessageI from './@Types/recipe'
+import type userMessageI from './@Types/welcome'
 
 
 export default function Welcome({userMessage} : userMessageI) {

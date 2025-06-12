@@ -72,9 +72,9 @@ function App() {
 
       </div>
       <div id="container">
-        {userMessage != "null" ? 
+        {userMessage === "null" ? 
           <Form setUserMessage={setUserMessage} setFetchError={setFetchError}/>:
-          <Welcome/>
+          <Welcome userMessage={userMessage}/>
         }
           {isLoading? (<Loader />) :
         // route pour toutes les recettes }

@@ -22,6 +22,10 @@ export interface RecipeCardsProps {
 }
 
 // props pour plusieurs recettes
-interface RecipeProps {
+export default interface RecipeProps {
   allRecipes: RecipeCardsI[];
+}
+
+export default interface userMessageI {
+    userMessage : string
 }
